@@ -140,6 +140,33 @@ The hardest questions across all models are logic constraint puzzles (card order
 
 7. **Persian degrades with quantization** — the 27B→Bonsai gap is 40 percentage points on Persian vs. 7 on General Knowledge. Multilingual capability is one of the first things lost.
 
+## Bonsai-8B: Is 1-Bit Worth It?
+
+Bonsai-8B fits in **1.1 GiB** — 14x smaller than Qwen3.5-27B (15.6 GiB), 5x smaller than Qwen3.5-9B (5.3 GiB), and half the size of Qwen3.5-4B (2.5 GiB). It's the fastest model tested at 46.5 tok/s and finishes the full 98-question benchmark in under 2 minutes. But those gains come at a real cost.
+
+**Where Bonsai holds up well:**
+- **Coding (100%)** — perfect score, matching or beating every Qwen model. Structured code generation is remarkably resilient to 1-bit quantization.
+- **General Knowledge (92.9%)** — only 7 points behind the 27B. Factual recall survives aggressive compression.
+- **History (96.4%)** — near-perfect, on par with the Qwen family.
+
+**Where it falls apart:**
+- **Persian (51.2%)** — essentially a coin flip. The 27B scores 91.7% on the same questions. Multilingual capability is the first casualty of extreme quantization.
+- **Logical Reasoning (55.9%)** — multi-step constraint puzzles and syllogisms require representational precision that 1-bit weights can't sustain.
+- **Math (66.7%)** — the harder arithmetic and algebra problems expose the precision loss.
+
+**The tradeoff in numbers:**
+
+| | Bonsai-8B | Qwen3.5-4B | Qwen3.5-9B | Qwen3.5-27B |
+|---|:-:|:-:|:-:|:-:|
+| Weight Size | **1.1 GiB** | 2.5 GiB | 5.3 GiB | 15.6 GiB |
+| Accuracy | 78.9% | 85.2% | 90.2% | 95.7% |
+| Gen Speed | **46.5 tok/s** | 36.7 tok/s | 27.0 tok/s | 9.5 tok/s |
+| Accuracy per GiB | **71.7%/GiB** | 34.1%/GiB | 17.0%/GiB | 6.1%/GiB |
+
+Bonsai delivers the best accuracy-per-gigabyte by a wide margin. If you're running on a device where every megabyte of RAM counts — phones, embedded boards, IoT — and your workload is primarily English coding or factual Q&A, Bonsai is a compelling choice. But if your use case involves reasoning, math, or non-English languages, the 2.5 GiB Qwen3.5-4B is a better investment: 6 more accuracy points for just 1.4 GiB of additional weight.
+
+**Bottom line:** Bonsai-8B proves that 1-bit models are viable for production use in constrained environments. It's not a toy — it scores 100% on coding and holds its own on factual tasks. But it's a specialist, not a generalist. For multilingual or reasoning-heavy workloads, spend the extra memory on a Qwen3.5 variant.
+
 ## Running
 
 ```bash
