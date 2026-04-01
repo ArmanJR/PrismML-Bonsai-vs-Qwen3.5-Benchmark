@@ -494,21 +494,32 @@ def plot_speed_distribution(detail: pd.DataFrame):
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def plot_verbosity(detail: pd.DataFrame):
+    # completion_tokens may be 0 when llama.cpp streaming doesn't report usage;
+    # fall back to character length of the full_response column.
+    col = "completion_tokens"
+    if detail[col].sum() == 0 and "full_response" in detail.columns:
+        detail = detail.copy()
+        detail["_resp_len"] = detail["full_response"].fillna("").str.len()
+        col = "_resp_len"
+        ylabel = "Response Length (chars)"
+    else:
+        ylabel = "Completion Tokens"
+
     fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
 
-    # Median completion tokens per model
+    # Median per model
     ax = axes[0]
-    medians = detail.groupby("model", observed=True)["completion_tokens"].median().reindex(MODEL_ORDER)
+    medians = detail.groupby("model", observed=True)[col].median().reindex(MODEL_ORDER)
     bars = ax.bar(
         MODEL_ORDER, medians,
         color=[MODEL_COLORS[m] for m in MODEL_ORDER],
         edgecolor="white", linewidth=0.3, width=0.55, zorder=3,
     )
     for bar, val in zip(bars, medians):
-        ax.text(bar.get_x() + bar.get_width() / 2, val + 1.5,
+        ax.text(bar.get_x() + bar.get_width() / 2, val + max(medians) * 0.02,
                 f"{val:.0f}", ha="center", va="bottom",
                 fontsize=11, fontweight="bold", color=TEXT_COLOR)
-    ax.set_ylabel("Median Completion Tokens")
+    ax.set_ylabel(ylabel)
     ax.set_title("Response Length (Median)", fontsize=14, fontweight="bold")
     ax.grid(axis="x", visible=False)
 
@@ -516,12 +527,13 @@ def plot_verbosity(detail: pd.DataFrame):
     ax = axes[1]
     palette = {m: MODEL_COLORS[m] for m in MODEL_ORDER}
     sns.boxplot(
-        data=detail, x="model", y="completion_tokens", order=MODEL_ORDER,
-        palette=palette, width=0.45, linewidth=1.2,
+        data=detail, x="model", y=col, order=MODEL_ORDER,
+        hue="model", palette=palette, legend=False,
+        width=0.45, linewidth=1.2,
         flierprops={"markerfacecolor": ACCENT_LIGHT, "markersize": 3},
         boxprops={"alpha": 0.7}, ax=ax, zorder=3,
     )
-    ax.set_ylabel("Completion Tokens")
+    ax.set_ylabel(ylabel)
     ax.set_xlabel("")
     ax.set_title("Response Length Distribution", fontsize=14, fontweight="bold")
     ax.grid(axis="x", visible=False)
