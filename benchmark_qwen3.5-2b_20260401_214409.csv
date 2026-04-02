@@ -1,0 +1,429 @@
+question_id,category,difficulty,prompt_preview,response_preview,score_mean,score_std,run_scores,prompt_tokens,completion_tokens,prompt_ms,predicted_ms,prompt_tok_s,gen_tok_s,ttft_ms,wall_time_ms,finish_reason,full_response,error
+1,general_knowledge,easy,What is the chemical symbol for gold? A) Au B) Ag C) Fe D) Gd Answer with just t,A,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,59.895,20.529,1035.1448367977293,97.42315748453407,94,112,stop,A,
+2,general_knowledge,easy,What gas do plants absorb from the atmosphere for photosynthesis? Answer in one ,Carbon dioxide,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,55.282,41.003,886.3644585941175,73.1653781430627,91,131,stop,Carbon dioxide,
+3,general_knowledge,medium,"What is the tallest mountain in the world, and what is its height in meters?",The tallest mountain in the world is **Mount Everest** (also known as Mount Chom,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.394,740.772,864.0658896201787,56.697607360969364,94,883,stop,"The tallest mountain in the world is **Mount Everest** (also known as Mount Chomolungma). Its height is approximately **8,848.86 meters** above sea level.",
+4,general_knowledge,medium,Name the four fundamental forces of nature.,The four fundamental forces of nature are:  1.  **Gravitational Force**: The att,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.592,1213.609,709.0610538886401,57.67920310412992,98,1637,stop,"The four fundamental forces of nature are:
+
+1.  **Gravitational Force**: The attraction between masses.
+2.  **Electromagnetic Force**: The interaction between electrically charged particles.
+3.  **Strong Nuclear Force**: Holds atomic nuclei together.
+4.  **Weak Nuclear Force**: Responsible for radioactive decay.",
+5,general_knowledge,medium,Which organ in the human body produces insulin? Answer with just the organ name.,Pancreas,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.692,57.077,856.7384340311406,70.08076808521821,90,147,stop,Pancreas,
+6,general_knowledge,hard,What phenomenon explains why the sky appears blue during the day? Name the type ,The phenomenon is **Rayleigh scattering**.  This occurs because the atmosphere c,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.679,2907.272,1005.4704408732255,57.09820064995639,104,2740,stop,"The phenomenon is **Rayleigh scattering**.
+
+This occurs because the atmosphere consists of gas molecules that are much smaller than the wavelength of visible light. According to the physics of this scattering:
+
+1.  **Inverse Relationship**: The intensity of scattered light is inversely proportional to the fourth power of the wavelength ($I \propto 1/\lambda^4$).
+2.  **Color Difference**: Blue light has a shorter wavelength (approximately 450 nm) compared to red light (approximately 650 nm). Because blue light's wavelength is significantly smaller, it scatters much more strongly than red light.
+3.  **Result**: As sunlight passes through the atmosphere, the blue component is scattered in all directions by these tiny particles, making the sky appear blue to observers on the ground.",
+7,general_knowledge,hard,"What is the Haber-Bosch process, and why is it significant?",The **Haber-Bosch process** (or hydrogenation of nitrogen) is an industrial meth,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.445,6784.54,841.9870895312938,57.33623797634032,100,5618,stop,"The **Haber-Bosch process** (or hydrogenation of nitrogen) is an industrial method for synthesizing ammonia ($NH_3$) from its elements: nitrogen gas ($N_2$) and hydrogen gas ($H_2$). The chemical reaction is represented as:
+
+$$N_2 + 3H_2 \rightleftharpoons 2NH_3$$
+
+It was developed independently by **Fritz Haber** (a German chemist) and **Carl Bosch** (an Austrian engineer) in the early 1900s. The process uses iron-based catalysts at high temperatures and pressures to break the strong triple bonds in nitrogen, allowing it to react with hydrogen under controlled conditions.
+
+### Significance
+The Haber-Bosch process is historically significant because:
+
+1.  **Solved a Critical Deficiency**: It was the first practical method to produce large quantities of ammonia cheaply and efficiently on an industrial scale. Before this, making enough nitrogen-based fertilizers for the global population was impossible; farmers had to rely on natural deposits, which were scarce and unevenly distributed.
+2.  **Massive Impact on Food Security**: The process enabled the production of synthetic fertilizer (ammonium nitrate, ammonium sulfate, etc.), allowing humanity to feed the rapidly growing world population (over 8 billion) in the last century without depleting natural soil resources. It is estimated that nearly half of all global food supply comes from this process.
+3.  **Economic and Social Transformation**: By making nitrogen cheap and available, it transformed agriculture into a viable industry, supporting the economic growth of nations like Germany and later contributing to the industrialization of countries in Eastern Europe and Asia.
+
+In summary, the Haber-Bosch process is the foundation of modern global food systems and one of the most important innovations in 20th-century technology.",
+8,general_knowledge,hard,"What is the Chandrasekhar limit, and what is its approximate value in solar mass",The **Chandrasekhar limit** is the maximum mass that a star can have before it c,0.8333,0.2887,"[1.0, 1.0, 0.5]",0,0,54.568,1823.571,897.9621756340713,57.5793319810416,98,1806,stop,"The **Chandrasekhar limit** is the maximum mass that a star can have before it collapses under its own gravity into a white dwarf (a degenerate electron gas). It occurs when the outward pressure of electrons, which resist gravitational collapse, becomes insufficient to counteract the inward pull. At this point, electrons begin to fuse with protons to form neutrons, leading to a core-collapse supernova.
+
+Its approximate value is **1.44 solar masses** ($M_{\odot}$).",
+9,math,easy,What is 247 multiplied by 83? Give only the number.,20501,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.957,92.371,871.0639954037474,64.95545138625761,90,182,stop,20501,
+10,math,easy,What is 15% of 240? Give only the number.,36,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.97,39.817,870.8541782471744,75.34470201170355,90,130,stop,36,
+11,math,medium,Solve for x: 3x + 7 = 34. Give only the value of x.,To solve for $x$ in the equation $3x + 7 = 34$:  1. Subtract 7 from both sides: ,0.6667,0.5774,"[0.0, 1.0, 1.0]",0,0,57.543,1020.458,921.0503449594216,57.817176209113946,97,790,stop,"To solve for $x$ in the equation $3x + 7 = 34$:
+
+1. Subtract 7 from both sides:
+   $$3x = 27$$
+
+2. Divide both sides by 3:
+   $$x = 9$$",
+12,math,medium,"A store offers a 20% discount on a $150 item, then an additional 10% off the alr",78,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,67.853,40.481,1075.8551574727721,74.10884118475335,76,128,stop,78,
+13,math,medium,"What is the sum of the interior angles of a hexagon, in degrees? Give only the n",(6-2) * 180 = 720,0.3333,0.5774,"[0.0, 0.0, 1.0]",0,0,54.857,269.072,929.6899210675027,59.463637985371946,95,234,stop,(6-2) * 180 = 720,
+14,math,hard,"What is C(10,3), that is, '10 choose 3'? Give only the number.",220,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,57.378,57.838,941.1272613196695,69.15868460181888,94,151,stop,220,
+15,math,hard,A car travels the first half of a 240 km journey at 40 km/h and the second half ,120,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,68.42,58.393,1154.63314820228,68.50136146455911,80,138,stop,120,
+16,math,hard,What is the definite integral of x² from 0 to 3? Give only the number.,9,0.6667,0.5774,"[0.0, 1.0, 1.0]",0,0,54.781,20.654,912.7252149467882,96.83354313934348,95,127,stop,9,
+17,coding,easy,Write a Python function `fizzbuzz(n)` that takes an integer n and returns a list,"```python def fizzbuzz(n):     result = []     for i in range(1, n + 1):        ",1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,77.901,1891.069,1386.3750144414064,57.11055492951341,82,1963,stop,"```python
+def fizzbuzz(n):
+    result = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append(""FizzBuzz"")
+        elif i % 3 == 0:
+            result.append(""Fizz"")
+        elif i % 5 == 0:
+            result.append(""Buzz"")
+        else:
+            result.append(str(i))
+    return result
+```",
+18,coding,easy,"Write a Python function `max_of_three(a, b, c)` that returns the largest of thre","```python def max_of_three(a, b, c):     if a >= b and a >= c:         return a ",1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,64.554,937.882,1053.381664962667,57.57653947938014,82,1079,stop,"```python
+def max_of_three(a, b, c):
+    if a >= b and a >= c:
+        return a
+    elif b >= a and b >= c:
+        return b
+    else:
+        return c
+```",
+19,coding,medium,Write a Python function `is_palindrome(s)` that returns True if the string is a ,"```python def is_palindrome(s: str) -> bool:     s = """".join(c.lower() for c in ",0.8333,0.2887,"[1.0, 1.0, 0.5]",0,0,63.917,762.982,1001.2985590687923,57.668464000461356,85,1054,stop,"```python
+def is_palindrome(s: str) -> bool:
+    s = """".join(c.lower() for c in s if c.isalnum())
+    return s == s[::-1]
+```",
+20,coding,medium,"Write a Python function `two_sum(nums, target)` that takes a list of integers an","```python def two_sum(nums, target):     seen = {}  # value -> index     for i, ",1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,72.799,1291.075,1222.5442657179356,57.316577270878916,85,1318,stop,"```python
+def two_sum(nums, target):
+    seen = {}  # value -> index
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    raise ValueError(""No solution found"")
+```",
+21,coding,medium,The following Python function is supposed to merge two sorted lists into one sor,"```python def merge_sorted(a, b):     result = []     i = j = 0     while i < le",0.7500,0.4330,"[1.0, 0.25, 1.0]",0,0,95.811,2388.328,1544.7078101679347,56.9436023862719,93,2207,stop,"```python
+def merge_sorted(a, b):
+    result = []
+    i = j = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            result.append(a[i])
+            i += 1
+        else:
+            result.append(b[j])
+            j += 1
+    # Append remaining elements from a or b
+    while i < len(a):
+        result.append(a[i])
+        i += 1
+    while j < len(b):
+        result.append(b[j])
+        j += 1
+    return result
+```",
+22,coding,hard,Write a Python function `flatten(lst)` that takes an arbitrarily nested list of ,```python def flatten(lst):     result = []     for item in lst:         if isin,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,76.908,908.063,1339.262495449108,57.26474925197922,87,991,stop,"```python
+def flatten(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+```",
+23,coding,hard,"Write a Python function `group_by_key(pairs)` that takes a list of (key, value) ","```python from collections import OrderedDict  def group_by_key(pairs):     """""" ",0.7500,0.4330,"[0.25, 1.0, 1.0]",0,0,31.605,2256.487,126.56225280809998,57.168510166466724,94,1865,stop,"```python
+from collections import OrderedDict
+
+def group_by_key(pairs):
+    """"""
+    Groups a list of (key, value) tuples by key and returns a dictionary mapping each key to a list of values.
+    
+    Parameters:
+    pairs (list): List of (key, value) tuples
+    
+    Returns:
+    dict: Dictionary with keys mapped to lists of corresponding values
+    """"""
+    result = OrderedDict()
+    for key, value in pairs:
+        if key not in result:
+            result[key] = []
+        result[key].append(value)
+    return result
+```",
+24,coding,hard,Write a Python function `topological_sort(graph)` that takes a directed acyclic ,"```python from collections import deque  def topological_sort(graph):     """"""   ",0.4167,0.1443,"[0.5, 0.25, 0.5]",0,0,95.459,5035.967,1539.9281366869545,57.784334170577374,106,4936,stop,"```python
+from collections import deque
+
+def topological_sort(graph):
+    """"""
+    Returns a list of nodes in valid topological order given:
+        graph = {node: [nodes that node must come before]}
+    
+    This is equivalent to ""edges going backwards"" from the dependency structure.
+    If 'a' depends on ['b', 'c'], then b and c are prerequisites, so we visit b/c first.
+    """"""
+    # Build reverse map: who depends on whom (prerequisite -> dependents)
+    prereq_to_dependents = {node: [] for node in graph}
+    for node, dependents in graph.items():
+        for dep in dependents:
+            prereq_to_dependents[dep].append(node)
+
+    # Use Kahn's algorithm with a queue of all nodes that have no prerequisites
+    q = deque()
+    for node in graph:
+        if not prereq_to_dependents[node]:
+            q.append(node)
+
+    result = []
+    while q:
+        u = q.popleft()
+        result.append(u)
+        # Add dependents of u to queue (they are ready now that u is processed)
+        for v in prereq_to_dependents[u]:
+            if v not in result:  # avoid duplicates during processing
+                q.append(v)
+
+    return result
+```",
+25,history,easy,In what year did World War II end? A) 1943 B) 1944 C) 1945 D) 1946 Answer with j,C,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,68.007,20.092,1146.940756098637,99.54210631096954,81,101,stop,C,
+26,history,easy,What ancient civilization built the pyramids at Giza? Answer in one or two words,Egyptian,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.16,42.116,886.2629246676515,71.23183588185012,94,134,stop,Egyptian,
+27,history,medium,"Who was the first President of the United States, and in what year did they take","The first President of the United States was George Washington, who took office ",1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.88,445.69,892.8571428571429,58.33651192532927,89,559,stop,"The first President of the United States was George Washington, who took office on March 4, 1789.",
+28,history,medium,"What event is commonly considered the start of the French Revolution, and in wha",The event commonly considered the start of the French Revolution is the **Stormi,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.337,616.47,920.1833005134622,58.39700228721592,95,1294,stop,"The event commonly considered the start of the French Revolution is the **Storming of the Bastille**. It occurred on **July 14, 1789**.",
+29,history,medium,"Who invented the printing press in Europe, and in approximately what year?",The printing press was invented by **Johannes Gutenberg** in Europe around the y,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,52.42,775.26,839.3742846241893,58.04504295333179,92,730,stop,"The printing press was invented by **Johannes Gutenberg** in Europe around the year **1440**. He developed a type of movable type that used lead for the characters, allowing for mass production of books.",
+30,history,hard,Name the three countries that formed the Triple Entente before World War I.,The three countries that formed the Triple Entente before World War I were:  1. ,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.562,1171.666,840.1478660244203,58.03701737525883,91,1358,stop,"The three countries that formed the Triple Entente before World War I were:
+
+1.  **Great Britain** (United Kingdom)
+2.  **France**
+3.  **Russia** (Russian Empire)
+
+This alliance was designed to counterbalance the Triple Alliance of Germany, Austria-Hungary, and Italy.",
+31,history,hard,What was the significance of the Treaty of Westphalia (1648)?,The **Treaty of Westphalia (1648)** is widely regarded as the most important int,0.8333,0.2887,"[1.0, 0.5, 1.0]",0,0,53.877,5218.55,872.3574066855987,56.7207366030794,99,4513,stop,"The **Treaty of Westphalia (1648)** is widely regarded as the most important international treaty in history, marking the end of the Holy Roman Empire and fundamentally reshaping global politics. Its significance lies in several key areas:
+
+*   **End of Religious War:** It concluded the Thirty Years' War, effectively ending decades of conflict centered on religious tensions within the Holy Roman Empire, establishing the principle that religious differences should not be a cause for war between sovereign states.
+*   **Sovereignty and Balance of Power:** It established the concept of national sovereignty, declaring that each state has its own supreme power over its territory. Simultaneously, it introduced the idea of a ""Balance of Power,"" where no single state could dominate all others, ensuring stability in Europe through diplomatic negotiation rather than military conquest.
+*   **End of Feudalism:** It marked the decline of feudalism and the rise of modern nation-states by solidifying the authority of monarchies over their territories and subjects.
+*   **Establishment of International Law:** It laid the groundwork for modern international law, creating a framework where states could negotiate treaties and disputes, moving beyond the chaotic state of war and private vendettas that had characterized pre-1648 Europe.
+
+In summary, the Treaty of Westphalia transitioned Europe from a system of competing empires into a system of independent nation-states governed by diplomacy and the balance of power.",
+32,history,hard,What was the Silk Road? Which two regions did it primarily connect? Name one maj,The **Silk Road** was a vast network of trade routes that connected the East to ,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.736,2083.765,969.9321047526674,57.1081671877587,101,1872,stop,"The **Silk Road** was a vast network of trade routes that connected the East to the West, facilitating commerce and cultural exchange across Eurasia during antiquity and early medieval times. It primarily connected the **Eastern Mediterranean/China** (specifically via the Persian Gulf and Indian Ocean) with **Central Asia**, the **Middle East**, and finally **Europe**.
+
+Besides silk, one major commodity traded on the Silk Road was **spice** (particularly black pepper from India and cloves), along with precious metals like gold and silver, as well as porcelain, tea, and paper.",
+33,logical_reasoning,easy,All cats are animals. Some animals are pets. Can we conclude that all cats are p,No,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.466,20.072,957.0876692305014,99.64129135113592,93,112,stop,No,
+34,logical_reasoning,easy,"What is the next number in the sequence: 2, 6, 18, 54, ? Answer with just the nu",162,0.3333,0.5774,"[0.0, 1.0, 0.0]",0,0,58.37,57.092,1027.9253040945691,70.06235549639179,94,150,stop,162,
+35,logical_reasoning,medium,"If it rains, the ground gets wet. The ground is wet. Can we conclude that it rai",No,0.3333,0.5774,"[1.0, 0.0, 0.0]",0,0,58.295,20.213,994.9395316922548,98.94622272794736,94,113,stop,No,
+36,logical_reasoning,medium,"If A > B and B > C, and C = 5, what is the minimum possible integer value of A? ",6,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,59.102,20.284,1032.113972454401,98.59988168014199,95,114,stop,6,
+37,logical_reasoning,medium,"Alice, Bob, and Charlie each own exactly one pet: a cat, a dog, and a fish (one ","Based on the clues provided:  1.  **Alice**: The pets are Cat, Dog, Fish. She do",0.7778,0.3849,"[1.0, 0.3333, 1.0]",0,0,81.608,5491.44,1556.2199784334869,57.17990181081829,91,2052,stop,"Based on the clues provided:
+
+1.  **Alice**: The pets are Cat, Dog, Fish. She does not own the Cat (Clue 1) and does not own the Dog (Clue 4). Therefore, Alice owns the **Fish**.
+2.  **Bob**: The pets are Cat, Dog, Fish. He does not own the Dog (Clue 2). Since Alice has the Fish, Bob must have the Cat or the Dog... wait, let's re-evaluate systematically.
+
+**Systematic Deduction:**
+
+*   **Alice's Pet**:
+    *   Clue 1: Not Cat.
+    *   Clue 4: Not Dog.
+    *   Remaining pet: **Fish**.
+    *   Result: Alice = Fish.
+
+*   **Bob's Pet**:
+    *   Bob does not own the Dog (Clue 2).
+    *   We know Alice has the Fish.
+    *   The remaining pets are Cat and Dog. Since Bob doesn't have the Dog, he must have the **Cat**.
+    *   Result: Bob = Cat.
+
+*   **Charlie's Pet**:
+    *   Charlie does not own the fish (Clue 3).
+    *   Alice has the Fish, Bob has the Cat.
+    *   The remaining pet is the Dog.
+    *   Result: Charlie = Dog.
+
+**Final Answer:**
+Alice=Fish, Bob=Cat, Charlie=Dog",
+38,logical_reasoning,hard,"Five houses stand in a row, numbered 1 to 5 from left to right. Each house is a ",Based on the constraints provided:  1.  **House 3** is **Green** (Constraint 2).,0.8667,0.2309,"[0.6, 1.0, 1.0]",0,0,31.438,6012.475,127.23455690565558,57.54701682751279,107,7012,stop,"Based on the constraints provided:
+
+1.  **House 3** is **Green** (Constraint 2).
+2.  The red house is immediately to the left of the blue house (Red is at $n$, Blue is at $n+1$). Since House 3 is Green, Red cannot be at 3 or 4. So, Red can be at 1 or 2.
+    *   If Red is at 2, Blue is at 3. But House 3 is Green. This is impossible.
+    *   Therefore, **Red is at Position 1** and **Blue is at Position 2**.
+3.  The blue house is not at either end (Constraint 5). We already placed Blue at 2, which satisfies this.
+4.  The yellow house is at an end (Position 1 or 5). Position 1 is Red, so **Yellow must be at Position 5**.
+5.  Remaining houses: 4 and 5 are taken by Blue and Yellow. Wait, let's re-list.
+    *   Pos 1: Red
+    *   Pos 2: Blue
+    *   Pos 3: Green
+    *   Pos 5: Yellow
+    *   Missing: Position 4. The only remaining color is **White**.
+6.  Constraint 4 check: White (Pos 4) is not adjacent to Red (Pos 1). This holds true.
+
+Final arrangement:
+1. Red
+2. Blue
+3. Green
+4. White
+5. Yellow
+
+**Red, Blue, Green, White, Yellow**",
+39,logical_reasoning,hard,All roses are flowers. Some flowers fade quickly. Can we conclude that some rose,Yes,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,57.143,20.028,962.4975937560156,99.86019572598363,99,118,stop,Yes,
+40,logical_reasoning,hard,A says 'B always lies.' B says 'A and I both tell the truth.' If exactly one of ,A,0.3333,0.5774,"[0.0, 1.0, 0.0]",0,0,31.586,20.262,126.63838409421896,98.70693909781858,78,97,stop,A,
+41,language_understanding,easy,What is the sentiment of the following text? 'I just watched that movie and it w,Negative,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,67.491,20.34,1111.25927901498,98.32841691248771,84,103,stop,Negative,
+42,language_understanding,easy,Complete the analogy: Painter is to Canvas as Author is to ___. Answer with one ,Book,0.3333,0.5774,"[0.0, 1.0, 0.0]",0,0,54.31,19.981,902.227950653655,100.09509033581902,91,110,stop,Book,
+43,language_understanding,medium,Read the following passage and provide a one-sentence summary:  'The Industrial ,The Industrial Revolution transformed Britain's agrarian economy into an industr,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,94.802,601.801,1497.858694964241,56.49708126108132,90,678,stop,"The Industrial Revolution transformed Britain's agrarian economy into an industrial powerhouse through technological innovation, resulting in urbanization, new social classes, and enduring environmental and social challenges.",
+44,language_understanding,medium,Which meaning of the word 'bank' is used in this sentence? 'We sat on the bank a,B,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,72.015,20.392,1319.169617440811,98.07767752059631,86,106,stop,B,
+45,language_understanding,medium,What is the antonym of 'ephemeral'? Answer with one word.,Permanent,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.345,58.052,846.4440150887847,68.90374147316199,94,138,stop,Permanent,
+46,language_understanding,hard,A colleague asks you: 'Do you think John would make a good manager?' You reply: ,You are implying that John has the potential to be an effective manager based so,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,67.771,907.394,1091.9124699355182,57.3069691886876,77,1076,stop,"You are implying that John has the potential to be an effective manager based solely on his punctuality and organizational skills. These traits are considered foundational ""soft skills"" for leadership, suggesting he would likely be reliable and capable of maintaining order in a team setting.",
+47,language_understanding,hard,Identify the literary device in this sentence: 'The wind whispered through the t,Personification,0.3333,0.5774,"[0.0, 1.0, 0.0]",0,0,55.332,40.31,939.7816814863008,74.42322004465393,94,133,stop,Personification,
+48,language_understanding,hard,Rewrite the following sentence from passive voice to active voice: 'The cake was,The children ate the cake.,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.624,110.101,933.6555360281194,63.57798748421903,88,197,stop,The children ate the cake.,
+49,persian,easy,پایتخت ایران کجاست؟ فقط نام شهر را بنویسید.,تهران,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.06,40.07,869.4043655197928,74.86897928624906,90,130,stop,تهران,
+50,persian,easy,معنی کلمه «آسمان» به انگلیسی چیست؟ فقط یک کلمه بنویسید.,Sky,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.341,20.592,959.87384515178,97.12509712509713,94,113,stop,Sky,
+51,persian,medium,جمله زیر را به انگلیسی ترجمه کنید: «من یک دانشجو هستم.»,I am a student.,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.325,94.934,920.3865623561896,63.20180335812249,90,184,stop,I am a student.,
+52,persian,medium,کدام فعل در این جمله استفاده شده است؟ «بچه‌ها در پارک بازی می‌کنند.» فقط فعل را ,بازی می‌کنند,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.734,113.935,1055.6066332958762,61.438539518146314,94,195,stop,بازی می‌کنند,
+53,persian,hard,این ضرب‌المثل فارسی «تا تنور داغ است نان را بچسبان» معادل کدام ضرب‌المثل انگلیسی,"As the oven is hot, bread sticks to it.",0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,68.104,203.743,1130.6237519088452,58.89772900173257,80,287,stop,"As the oven is hot, bread sticks to it.",
+54,persian,medium,جمله زیر را به فارسی ترجمه کنید: «The sun rises in the east.»,خورشید در شرق طلوع می‌کند.,0.6667,0.5774,"[1.0, 1.0, 0.0]",0,0,53.83,216.524,910.2730819245775,60.03953372374425,94,269,stop,خورشید در شرق طلوع می‌کند.,
+55,persian,hard,شعر زیر از کیست؟ «بنی‌آدم اعضای یکدیگرند / که در آفرینش ز یک گوهرند» فقط نام شاع,حافظ شیرازی,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,67.508,76.336,1051.7272027019021,65.49989520016769,78,147,stop,حافظ شیرازی,
+56,persian,hard,در ادبیات فارسی، «شاهنامه» اثر کیست و موضوع اصلی آن چیست؟,در ادبیات فارسی، شاهنامه اثر **فریدون فردوسی** است. موضوع اصلی این کتاب، زندگی و,0.8333,0.2887,"[1.0, 0.5, 1.0]",0,0,55.382,1480.616,920.8768191831281,56.73314350243412,101,1745,stop,در ادبیات فارسی، شاهنامه اثر **فریدون فردوسی** است. موضوع اصلی این کتاب، زندگی و حماسه‌های **ایران (نارگانی)** و پادشاهی‌شان می‌باشد که با الهام از زندگی واقعی شاهان ایرانی مانند شاهنامه‌ی «دشت‌پناه» و «مردبادی» روایت شده است.,
+57,general_knowledge,easy,What is the SI unit of electric current? Answer with one word.,Ampere,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,52.713,58.426,834.7087056323867,68.46267072878513,91,136,stop,Ampere,
+58,general_knowledge,easy,Which metal is liquid at standard room temperature? Answer with one word.,Mercury,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,52.93,39.977,831.2866049499339,75.0431498111414,94,126,stop,Mercury,
+59,general_knowledge,medium,What mineral ore is the primary commercial source of aluminum? Answer with one w,Bauxite,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.873,57.549,853.8600040836784,69.50598620306174,91,148,stop,Bauxite,
+60,general_knowledge,medium,In which layer of Earth's atmosphere is most ozone found? Answer with one word.,Stratosphere,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.245,57.776,866.4393031615817,69.23289947382996,88,144,stop,Stratosphere,
+61,general_knowledge,hard,What scientific law states that pressure applied to a confined fluid is transmit,Pascal's Law,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.597,77.05,989.6348768165009,64.89292667099286,96,243,stop,Pascal's Law,
+62,general_knowledge,hard,What term describes the symbiotic association between fungi and plant roots? Ans,Mycorrhiza,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.991,76.41,889.037061732511,65.43646119617851,90,165,stop,Mycorrhiza,
+63,math,easy,What is (18² − 17²)? Give only the number.,35,0.3333,0.5774,"[1.0, 0.0, 0.0]",0,0,54.124,39.788,868.3763210405734,75.39961797526892,88,139,stop,35,
+64,math,easy,A recipe uses 3 cups of flour for 8 muffins. How many cups are needed for 20 muf,7.5,0.3333,0.5774,"[0.0, 0.0, 1.0]",0,0,58.535,57.619,1042.1115571880073,69.42154497648345,95,145,stop,7.5,
+65,math,medium,Solve for x: 2(x − 3) = 3x + 5. Give only the value of x.,"To solve for $x$ in the equation $2(x - 3) = 3x + 5$, follow these steps:  1. **",0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,58.394,2242.977,976.127684351132,57.06701406211477,102,2331,length,"To solve for $x$ in the equation $2(x - 3) = 3x + 5$, follow these steps:
+
+1. **Distribute the 2 on the left side:**
+   $$2x - 6 = 3x + 5$$
+
+2. **Subtract $3x$ from both sides to group the $x$ terms:**
+   $$2x - 3x - 6 = 5$$
+   $$-x - 6 = 5$$
+
+3. **Add 6 to both sides to isolate the variable term:**
+   $$-x",
+66,math,medium,"At 3:40, what is the smaller angle between the hour hand and the minute hand of ",The answer depends on whether the clock shows 3:40 AM or PM.  **Case 1: 3:40 AM ,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,58.581,2235.471,1041.2932520783188,57.25862692917958,103,2334,length,"The answer depends on whether the clock shows 3:40 AM or PM.
+
+**Case 1: 3:40 AM (Standard Clock Time)**
+*   The minute hand is at the 8 ($360^\circ \div 5 = 72^\circ$).
+*   The hour hand has moved past the 3 but not yet reached the 4. It has moved $1/5$ of an hour, which is $360^\circ \times (1/5) = 72^\circ$.
+*   Total angle from 12 o'clock",
+67,math,hard,"A tank is 3/5 full. After adding 24 liters, it becomes 3/4 full. What is the tan",180,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,66.219,57.915,1041.9970099216239,69.0667357334024,81,138,stop,180,
+68,math,hard,Find the sum of the infinite geometric series: 12 − 6 + 3 − 1.5 + … Give only th,**48**,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,58.655,75.78,1022.9306964453158,65.98046978094484,97,3016,stop,**48**,
+69,coding,easy,Write a Python function `unique_preserve_order(items)` that returns a new list c,```python def unique_preserve_order(items):     seen = set()     result = []    ,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,71.557,955.035,1243.763712844306,57.589512426246166,82,1033,stop,"```python
+def unique_preserve_order(items):
+    seen = set()
+    result = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+```",
+70,coding,easy,"Write a Python function `chunk_string(s, n)` that splits a string into consecuti","```python def chunk_string(s, n):     return [s[i:i+n] for i in range(0, len(s),",0.6667,0.5774,"[1.0, 1.0, 0.0]",0,0,69.224,589.536,1213.4519819715704,57.672474624111175,83,881,stop,"```python
+def chunk_string(s, n):
+    return [s[i:i+n] for i in range(0, len(s), n)]
+```",
+71,coding,medium,Write a Python function `rotate_matrix_clockwise(M)` that returns a new matrix r,```python def rotate_matrix_clockwise(M):     if not M or len(M) == 0:         r,0.5000,0.0000,"[0.5, 0.5, 0.5]",0,0,71.709,2084.921,1227.182083141586,57.55613761864359,97,2161,stop,"```python
+def rotate_matrix_clockwise(M):
+    if not M or len(M) == 0:
+        return []
+    
+    n = len(M)
+    new_M = [[None] * n for _ in range(n)]
+    
+    # Rotate 90 degrees clockwise: new[i][j] = old[n-1-j][i]
+    for i in range(n):
+        for j in range(n):
+            new_M[j][n - 1 - i] = M[i][j]
+            
+    return new_M
+```",
+72,coding,medium,"Write a Python function `decode_ranges(spec)` that takes a string like ""1-3,5,8-","```python def decode_ranges(spec):     result = []     parts = spec.split(',')  ",0.5833,0.3819,"[0.25, 0.5, 1.0]",0,0,31.785,1494.58,125.84552461853075,57.54124904655489,98,2066,stop,"```python
+def decode_ranges(spec):
+    result = []
+    parts = spec.split(',')
+    
+    for part in parts:
+        if '-' in part:
+            start, end = map(int, part.split('-'))
+            for i in range(start, end + 1):
+                result.append(i)
+        else:
+            result.append(int(part))
+    
+    return result
+```",
+73,coding,hard,Write a Python function `nest_by_dots(flat)` that converts a dictionary with dot,```python def nest_by_dots(flat):     result = {}     for key in flat:         p,0.7500,0.4330,"[0.25, 1.0, 1.0]",0,0,31.401,1505.201,127.38447820133116,57.79958955647784,93,1985,stop,"```python
+def nest_by_dots(flat):
+    result = {}
+    for key in flat:
+        parts = key.split('.')
+        current = result
+        for part in parts[:-1]:
+            if part not in current:
+                current[part] = {}
+            current = current[part]
+        current[parts[-1]] = flat[key]
+    return result
+```",
+74,coding,hard,"Write a Python function `interval_gaps(intervals, start, end)` where `intervals`","```python def interval_gaps(intervals, start, end):     """"""     Find uncovered h",0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,93.593,4326.637,1431.7310055239172,57.31934525591123,106,4330,stop,"```python
+def interval_gaps(intervals, start, end):
+    """"""
+    Find uncovered half-open intervals [start, end).
+    
+    Intervals are considered overlapping if their intersection is non-empty.
+    Two intervals [a, b) and [c, d) overlap if max(a,c) < min(b,d).
+    """"""
+    sorted_intervals = sorted(intervals)
+    result = []
+    
+    current = sorted_intervals[0]  # [start, end)
+    
+    for i in range(1, len(sorted_intervals)):
+        next_interval = sorted_intervals[i]  # [next_start, next_end)
+        
+        if next_interval[0] <= current[1]:
+            # Overlap or touch; merge
+            current = [current[0], max(current[1], next_interval[1])]
+        else:
+            # No overlap; add the previous merged interval if it exists
+            if current:
+                result.append([current[0], current[1]])
+            current = next_interval
+    
+    # Don't forget the last interval
+    if current:
+        result.append(current)
+    
+    return result
+```",
+75,history,easy,Which empire built Machu Picchu? Answer in one or two words.,Inca,0.6667,0.5774,"[1.0, 0.0, 1.0]",0,0,53.618,42.376,839.2703942705807,70.79478950349254,95,128,stop,Inca,
+76,history,easy,What structure's fall in 1989 became a symbol of the end of the division between,The Wall,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,58.76,40.168,1055.139550714772,74.6863174666401,96,129,stop,The Wall,
+77,history,medium,What document signed in 1215 is famous for limiting the power of the English kin,Magna Carta,0.6667,0.5774,"[1.0, 0.0, 1.0]",0,0,58.328,57.888,977.2322040872309,69.09894969596462,94,151,stop,Magna Carta,
+78,history,medium,Which Roman emperor established Constantinople as an imperial capital? Answer wi,Constantine I,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,53.921,57.428,890.1912056527142,69.65243435258063,92,149,stop,Constantine I,
+79,history,hard,Which treaty signed in 1713 helped end the War of the Spanish Succession? Answer,The Treaty of Utrecht (1713),1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.133,183.435,963.3082758502054,59.966745713740565,94,395,stop,The Treaty of Utrecht (1713),
+80,history,hard,Which Chinese dynasty began ruling after the fall of the Yuan dynasty in 1368? A,Ming Dynasty,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.657,57.759,971.261078446676,69.25327654564657,94,145,stop,Ming Dynasty,
+81,logical_reasoning,easy,All metals conduct electricity. Copper is a metal. Can we conclude that copper c,Yes,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.05,20.152,946.5381244522349,99.24573243350535,95,114,stop,Yes,
+82,logical_reasoning,easy,"What is the next number in the sequence: 1, 2, 4, 7, 11, ? Answer with just the ",16,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.816,40.749,1054.1349292709467,73.62143856290952,94,134,stop,16,
+83,logical_reasoning,medium,No musicians dislike rhythm. Some drummers are musicians. Can we conclude that s,Yes,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.13,20.373,1014.9664544985378,98.16914543758897,94,114,stop,Yes,
+84,logical_reasoning,medium,"Nadia, Omid, and Parisa each have exactly one different badge color: red, blue, ",Based on the clues provided: 1.  **Nadia**: Cannot have Red (Clue 1). Cannot hav,0.5555,0.3849,"[1.0, 0.3333, 0.3333]",0,0,93.449,6712.414,1423.2362037046946,57.058459147484044,99,5398,stop,"Based on the clues provided:
+1.  **Nadia**: Cannot have Red (Clue 1). Cannot have Green (since Omid cannot have Green and they are distinct, but let's check others first). Wait, Clue 4 says Omid does not have Red. Clue 2 says Omid does not have Green. So Omid has Blue. Since each person has one unique color, Omid = Blue.
+2.  **Omid**: Cannot have Green (Clue 2) and cannot have Red (Clue 4). Therefore, Omid must have **Blue**.
+3.  **Parisa**: Cannot have Blue (Clue 3). Since Omid has Blue, Parisa cannot have it. She also cannot have Red? Let's re-evaluate.
+    *   Omid = Blue.
+    *   Nadia != Red (Clue 1).
+    *   Parisa != Blue (Clue 3).
+    *   Remaining colors for Nadia: Green or Red. Since she can't be Red, **Nadia = Green**.
+    *   This leaves **Parisa = Red**.
+
+Let's double-check the constraints with this assignment:
+*   Nadia = Green. (Not Red? Yes.)
+*   Omid = Blue. (Not Green? Yes.)
+*   Parisa = Red. (Not Blue? Yes.)
+*   Clue 1: Nadia not Red? Yes.
+*   Clue 2: Omid not Green? Yes.
+*   Clue 3: Parisa not Blue? Yes.
+*   Clue 4: Omid not Red? Yes (Omid is Blue).
+
+All clues are satisfied.
+
+Nadia=Green, Omid=Blue, Parisa=Red",
+85,logical_reasoning,hard,"Ari, Bina, Cyrus, and Darya finish a race in positions 1 through 4, with no ties","Ari, Darya, Cyrus, Bina",0.6667,0.5774,"[1.0, 1.0, 0.0]",0,0,80.956,180.949,1519.3438410988683,60.7906095087566,86,261,stop,"Ari, Darya, Cyrus, Bina",
+86,logical_reasoning,hard,"Four cards labeled A, B, C, and D are placed in a row from left to right. Clues:","A, B, C, D",0.0833,0.1443,"[0.25, 0.0, 0.0]",0,0,80.037,127.909,1461.8239064432698,62.544465205732195,82,209,stop,"A, B, C, D",
+87,language_understanding,easy,"Which meaning of the word ""meticulous"" fits this sentence best? ""The archivist k",A,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,68.257,20.474,1172.0409628316509,97.68486861385172,85,105,stop,A,
+88,language_understanding,easy,"What is the tone of this sentence? ""Wonderful—another software update right befo",Sarcastic,0.3333,0.5774,"[0.0, 1.0, 0.0]",0,0,31.692,59.497,126.21481761958854,67.23028051834547,81,127,stop,Sarcastic,
+89,language_understanding,medium,"What does this sentence presuppose? ""Leila stopped commuting by car last month.""",The sentence presupposes that Leila has not stopped commuting by car previously.,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,58.184,272.76,945.2770521105458,58.65962751136531,95,377,stop,The sentence presupposes that Leila has not stopped commuting by car previously.,
+90,language_understanding,medium,"Read the two statements: Statement 1: ""Every lamp in the hallway was switched of",Contradiction,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,71.772,58.373,1281.8369280499358,68.52483168588218,81,139,stop,Contradiction,
+91,language_understanding,hard,"A hiring manager asks, ""Would Samira be good in a client-facing role?"" You reply",Your answer implies that Samira's flawless report formatting is the sole reason ,0.5000,0.0000,"[0.5, 0.5, 0.5]",0,0,66.709,726.54,1049.3336731175702,57.80824180361714,84,672,stop,"Your answer implies that Samira's flawless report formatting is the sole reason you believe she would be suitable for a client-facing role, suggesting your judgment relies entirely on her professional presentation rather than any other qualities.",
+92,language_understanding,hard,"In the sentence ""Even Farid passed the qualifying exam,"" what does the word ""eve","The word ""even"" implies that Farid's success in passing the exam was surprising ",1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,57.929,461.887,1018.4881492861952,58.45585608601238,98,628,stop,"The word ""even"" implies that Farid's success in passing the exam was surprising or unexpected given the difficulty of the test.",
+93,persian,easy,متضادِ «کوتاه» چیست؟ فقط یک کلمه بنویسید.,طولانی,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,54.427,40.391,937.0349275175925,74.27397192443861,89,129,stop,طولانی,
+94,persian,easy,جملهٔ «The window is open.» را به فارسی ترجمه کنید.,پنجره باز است.,0.6667,0.2887,"[0.5, 0.5, 1.0]",0,0,54.078,127.8,887.6067901919448,62.59780907668232,92,213,stop,پنجره باز است.,
+95,persian,medium,در جملهٔ «کتابِ جدیدِ معلم روی میز است»، واژهٔ «روی» چه نقشی دارد؟ فقط نام نقش ر,مفعول,0.0000,0.0000,"[0.0, 0.0, 0.0]",0,0,64.754,58.98,1034.6851159773912,67.81959986436081,79,149,stop,مفعول,
+96,persian,medium,معنیِ اصطلاحِ «آب از سرش گذشته» چیست؟ کوتاه توضیح دهید.,«آب از سرش گذشته» به معنای **تلاش‌های بی‌ثمر** یا **کارهایی که نتیجه نهایی ندارن,1.0000,0.0000,"[1.0, 1.0, 1.0]",0,0,54.775,1013.61,931.0816978548609,57.2212192065982,101,1082,stop,«آب از سرش گذشته» به معنای **تلاش‌های بی‌ثمر** یا **کارهایی که نتیجه نهایی ندارند** است؛ یعنی کسی که با تمام توان تلاش می‌کند، اما هدف مورد نظرش را نمی‌رسد.,
+97,persian,hard,مفهومِ این بیت چیست؟ «تو نیکی می‌کن و در دجله انداز / که ایزد در بیابانت دهد باز,این بیت از مفهوم **«بزرگ‌نمایی کثرت»** یا **شجاعت در برابر سختی** سخن می‌گوید.  ,0.8333,0.2887,"[1.0, 1.0, 0.5]",0,0,67.349,2593.378,1098.7542502487045,56.297230870316625,91,2990,stop,"این بیت از مفهوم **«بزرگ‌نمایی کثرت»** یا **شجاعت در برابر سختی** سخن می‌گوید.  
+«تو نیکی می‌کن و در دجله انداز» یعنی فردی که در سختی و دشوار (دجله) به کار می‌گیرد، اما با «نیکی» انجام می‌دهد؛ یعنی نیکخواهی او در شرایط سخت است.  
+بخش دوم («که ایزد در بیابانت دهد باز») بیانگر این است که خداوند (ایزد) به آن شخص در راه درست و نیک، بازخورد مثبت یا هدیه‌های بزرگی می‌دهد.",
+98,persian,hard,در جملهٔ «اگر زودتر خبر می‌داد، می‌آمدم» گوینده چه چیزی را بیان می‌کند؟ کوتاه تو,گوینده در این جمله **نتیجه احتمالی** (یعنی اینکه اگر موضوع قبلاً به او اطلاع داد,0.5000,0.0000,"[0.5, 0.5, 0.5]",0,0,63.699,739.881,1051.821849636572,56.765885324802234,83,979,stop,گوینده در این جمله **نتیجه احتمالی** (یعنی اینکه اگر موضوع قبلاً به او اطلاع داده شده بود، او حاضر است عمل کند) را بیان می‌کند.,

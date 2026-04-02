@@ -1,0 +1,2 @@
+model,params_b,quant,overall_score,general_knowledge,math,coding,history,logical_reasoning,language_understanding,persian,avg_gen_tok_s,avg_prompt_tok_s,avg_ttft_ms,vram_mb,total_wall_time_s
+Qwen3.5-35B-A3B,35.5,Q4_K_M,0.9024,1.0000,0.8095,0.9881,0.8571,0.8167,1.0000,0.8452,34.2,205.9,300,,122.8
