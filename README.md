@@ -246,5 +246,3 @@ If you use this benchmark or build on its results, please cite it:
   version = {2026.04.17}
 }
 ```
-
-A [`CITATION.cff`](CITATION.cff) file is included so GitHub can render a "Cite this repository" button directly on the repo page.
