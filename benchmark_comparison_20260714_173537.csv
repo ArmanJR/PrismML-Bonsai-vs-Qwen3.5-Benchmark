@@ -1,0 +1,2 @@
+model,params_b,quant,overall_score,general_knowledge,math,coding,history,logical_reasoning,language_understanding,persian,avg_gen_tok_s,avg_prompt_tok_s,avg_ttft_ms,vram_mb,total_wall_time_s
+Ternary-Bonsai-27B,27.3,Q2_0,0.8618,1.0000,0.6905,0.9405,1.0000,0.7948,0.9405,0.6667,13.7,94.3,665,,335.5

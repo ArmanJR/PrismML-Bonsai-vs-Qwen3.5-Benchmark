@@ -1,0 +1,42 @@
+[Unit]
+Description=llama.cpp (PrismML fork) server — Ternary-Bonsai-27B Q2_0_g128 (ternary, CUDA)
+After=network.target
+
+[Service]
+Type=simple
+User=user
+WorkingDirectory=/opt/llama.cpp-prismml
+
+# Upstream Q2_0 is group-64 and CPU/Metal-only. The PrismML fork's `prism`
+# branch adds group-128 Q2_0 CUDA kernels, so the g128 file runs on the GPU.
+# Disable the model's default thinking mode so it answers directly.
+Environment=LLAMA_CHAT_TEMPLATE_KWARGS={"enable_thinking":false}
+
+ExecStart=/opt/llama.cpp-prismml/build/bin/llama-server \
+    -m /models/Ternary-Bonsai-27B-Q2_0.gguf \
+    --alias Ternary-Bonsai-27B \
+    --host 0.0.0.0 \
+    --port 8001 \
+    -np 1 \
+    -fa on \
+    --no-mmap \
+    -ctk q8_0 \
+    -ctv q8_0 \
+    --ctx-size 16384 \
+    -ngl 99 \
+    --temp 0.7 \
+    --top-k 20 \
+    --top-p 0.95 \
+    --min-p 0.0 \
+    --cache-reuse 256 \
+    --reasoning off
+
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=llama-server-ternary-bonsai-27b
+
+[Install]
+WantedBy=multi-user.target

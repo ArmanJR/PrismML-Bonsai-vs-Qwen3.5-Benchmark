@@ -1,0 +1,41 @@
+[Unit]
+Description=llama.cpp server — Bonsai-27B Q1_0 (1-bit, 27B)
+After=network.target
+
+[Service]
+Type=simple
+User=user
+WorkingDirectory=/opt/llama.cpp
+
+# Q1_0 is upstreamed into mainline llama.cpp (CUDA) — no fork needed.
+# Disable the model's default thinking mode so it answers directly.
+Environment=LLAMA_CHAT_TEMPLATE_KWARGS={"enable_thinking":false}
+
+ExecStart=/opt/llama.cpp/build/bin/llama-server \
+    -m /models/Bonsai-27B-Q1_0.gguf \
+    --alias Bonsai-27B \
+    --host 0.0.0.0 \
+    --port 8001 \
+    -np 1 \
+    -fa on \
+    --no-mmap \
+    -ctk q8_0 \
+    -ctv q8_0 \
+    --ctx-size 16384 \
+    -ngl 99 \
+    --temp 0.7 \
+    --top-k 20 \
+    --top-p 0.95 \
+    --min-p 0.0 \
+    --cache-reuse 256 \
+    --reasoning off
+
+Restart=on-failure
+RestartSec=5
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=llama-server-bonsai-27b
+
+[Install]
+WantedBy=multi-user.target

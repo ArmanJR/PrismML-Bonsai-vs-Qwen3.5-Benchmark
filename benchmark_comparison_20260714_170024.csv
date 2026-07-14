@@ -1,0 +1,2 @@
+model,params_b,quant,overall_score,general_knowledge,math,coding,history,logical_reasoning,language_understanding,persian,avg_gen_tok_s,avg_prompt_tok_s,avg_ttft_ms,vram_mb,total_wall_time_s
+Bonsai-27B,27.3,Q1_0,0.8294,1.0000,0.6429,0.9762,0.9881,0.7817,0.9643,0.4524,14.7,83.1,522,,424.6

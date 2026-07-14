@@ -37,6 +37,8 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 COMPARISON_CSV = "benchmark_comparison_merged.csv"
 MODEL_CSVS = {
     "Qwen3.5-35B-A3B": "benchmark_qwen3.5-35b-a3b_20260401_215413.csv",
+    "Bonsai-27B": "benchmark_bonsai-27b_20260714_170024.csv",
+    "Ternary-Bonsai-27B": "benchmark_ternary-bonsai-27b_20260714_173537.csv",
     "Qwen3.5-27B": "benchmark_qwen3.5-27b_20260401_091717.csv",
     "Qwen3.5-9B": "benchmark_qwen3.5-9b_20260401_091717.csv",
     "Bonsai-8B": "benchmark_bonsai-8b_20260401_091717.csv",
@@ -51,6 +53,8 @@ MODEL_CSVS = {
 # Visual identity
 MODEL_COLORS = {
     "Qwen3.5-35B-A3B": "#06d6a0",
+    "Bonsai-27B": "#e85d04",
+    "Ternary-Bonsai-27B": "#9d0208",
     "Qwen3.5-27B": "#4361ee",
     "Qwen3.5-9B": "#7209b7",
     "Bonsai-8B": "#fb8500",
@@ -62,7 +66,8 @@ MODEL_COLORS = {
     "Qwen3.5-0.8B": "#ef476f",
 }
 MODEL_ORDER = [
-    "Qwen3.5-35B-A3B", "Qwen3.5-27B", "Qwen3.5-9B",
+    "Qwen3.5-35B-A3B", "Bonsai-27B", "Ternary-Bonsai-27B",
+    "Qwen3.5-27B", "Qwen3.5-9B",
     "Bonsai-8B", "Ternary-Bonsai-8B",
     "Qwen3.5-4B", "Ternary-Bonsai-4B",
     "Qwen3.5-2B", "Ternary-Bonsai-1.7B", "Qwen3.5-0.8B",
@@ -84,6 +89,8 @@ DIFFICULTY_ORDER = ["easy", "medium", "hard"]
 # Weight file sizes in GiB (from model.safetensors / gguf on disk)
 MODEL_WEIGHT_GIB = {
     "Qwen3.5-35B-A3B": 20.5,
+    "Bonsai-27B": 3.542,
+    "Ternary-Bonsai-27B": 6.673,
     "Qwen3.5-27B": 15.6,
     "Qwen3.5-9B": 5.3,
     "Bonsai-8B": 1.1,
