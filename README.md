@@ -4,7 +4,9 @@
 
 > **Fairness note on Ternary-Bonsai speeds:** the `mlx-2bit` Ternary-Bonsai models (1.7B / 4B / 8B) are designed for Apple Silicon. To compare them head-to-head with the llama.cpp models on the same hardware, we ported them to run on Jetson CUDA (source build of MLX with sm_87 kernels). **The tok/s numbers reported here for those three MLX Ternary-Bonsai models are Jetson-MLX-CUDA numbers, not what you'd see on an M-series Mac or iPhone.** Per the model cards, the same weights run at ~30 tok/s on M4 Pro and ~100 tok/s on iPhone 17 Pro Max — several times faster than our Jetson port. Accuracy is intrinsic to the weights and is unaffected. **The two new 27B models are GGUF and run natively on llama.cpp CUDA**, so their tok/s are real llama.cpp GPU numbers (no MLX caveat).
 
-How good is the world's first 1-bit LLM, and can we stretch the same idea all the way up to 27B? We pit [Bonsai-8B](https://prismml.com/news/bonsai-8b) (1-bit, llama.cpp Q1_0), the two new **27B Bonsai models** (Bonsai-27B 1-bit `Q1_0` and Ternary-Bonsai-27B `Q2_0` ternary, both GGUF on llama.cpp CUDA), and the [Ternary-Bonsai collection](https://huggingface.co/collections/prism-ml/ternary-bonsai) (1.7B / 4B / 8B, 1.58-bit ternary weights served via MLX-CUDA) against six Qwen3.5 variants (0.8B–27B) on an NVIDIA Jetson Orin. All 12 models answer the same 98 questions across 7 categories.
+How good is the world's first 1-bit LLM, and can we stretch the same idea all the way up to 27B? We pit [Bonsai-8B](https://prismml.com/news/bonsai-8b) (1-bit, llama.cpp Q1_0), the two new **27B Bonsai models** (Bonsai-27B 1-bit `Q1_0` and Ternary-Bonsai-27B `Q2_0` ternary, both GGUF on llama.cpp CUDA), and the [Ternary-Bonsai collection](https://huggingface.co/collections/prism-ml/ternary-bonsai) (1.7B / 4B / 8B, 1.58-bit ternary weights served via MLX-CUDA) against six Qwen3.5 variants (0.8B–27B) **and Qwen3.6-27B** on an NVIDIA Jetson Orin. All 13 models answer the same 98 questions across 7 categories.
+
+**Qwen3.6-27B (`Q4_K_M`) is the key reference point:** the two 27B Bonsai models are 1-bit / ternary quantizations of essentially this same backbone, so running the full-quality `Q4_K_M` version turns the 27B trio into a clean **quantization ladder on one architecture** — 4-bit → ternary → 1-bit — that isolates exactly what each bit level costs.
 
 ## About the Bonsai family
 
@@ -24,6 +26,7 @@ The benchmark measures two things at once: how these aggressively-quantized Bons
 | Model | Params | Quant | Runtime | Architecture | Weight Size |
 |-------|-------:|-------|---------|--------------|------------:|
 | **Qwen3.5-35B-A3B** | 35.5 B (3B active) | Q4_K_M | llama.cpp | MoE Hybrid SSM + Attention | 20.5 GiB |
+| **Qwen3.6-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | 27.3 B | Q4_K_M | llama.cpp (upstream, CUDA) | Hybrid Attention (`qwen35`, full precision ref) | 15.7 GiB |
 | **Ternary-Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | 27.3 B | Q2_0 (ternary, g128) | llama.cpp (PrismML fork, CUDA) | Hybrid Attention (Qwen3.5-27B 1.58-bit) | 6.7 GiB |
 | **Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | 27.3 B | Q1_0 | llama.cpp (upstream, CUDA) | Hybrid Attention (Qwen3.5-27B 1-bit) | 3.5 GiB |
 | **Qwen3.5-27B** | 26.9 B | Q4_K_M | llama.cpp | Hybrid SSM + SWA + Full Attention | 15.6 GiB |
@@ -72,6 +75,7 @@ Each question is run **3 times** per model. Scores report the mean across runs. 
 | Model | Accuracy | Gen tok/s | Prompt tok/s | Wall Time |
 |-------|:--------:|:---------:|:------------:|:---------:|
 | Qwen3.5-27B | **95.7%** | 9.5 | 107 | 444s |
+| **Qwen3.6-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | **94.2%** | 9.7 | 67 | 412s |
 | Qwen3.5-35B-A3B | 90.2% | 34.2 | 206 | 123s |
 | Qwen3.5-9B | 90.2% | 27.0 | 320 | 167s |
 | **Ternary-Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | **86.2%** | 13.7 | 94 | 336s |
@@ -88,7 +92,7 @@ Each question is run **3 times** per model. Scores report the mean across runs. 
 
 ![Overall Accuracy](benchmark_plots/01_overall_accuracy.png)
 
-Qwen3.5-27B still leads at 95.7%. The 35B-A3B MoE ties the dense 9B at 90.2%. The new **Ternary-Bonsai-27B lands at 86.2%** — the highest of the entire Bonsai family, edging past Ternary-Bonsai-8B (85.0%) and the dense Qwen3.5-4B (85.2%), though it doesn't close the gap to the ≥90% Qwen tier. The 1-bit **Bonsai-27B (82.9%)** beats the 1-bit Bonsai-8B (78.9%) by four points but lands *below* the 8B ternary model — at this scale, going ternary (2 bits) buys more accuracy than going 1-bit-but-bigger. **Ternary-Bonsai-8B (85.0%)** remains six points above the original Bonsai-8B and level with Qwen3.5-4B despite half the weight storage. **Ternary-Bonsai-4B (83.0%)** sits just under its Qwen counterpart with 40 % of the weight file. The smallest variant, **Ternary-Bonsai-1.7B (65.1%)**, slots between Qwen3.5-2B (69.9%) and Qwen3.5-0.8B (53.4%) — respectable given its 462 MiB footprint.
+Qwen3.5-27B still leads at 95.7%, with the new **Qwen3.6-27B close behind at 94.2%** — it aces five of seven categories (GK, math, coding, history, language all 100%) and only gives ground on logic (79.9%) and Persian (79.8%). The 35B-A3B MoE ties the dense 9B at 90.2%. The new **Ternary-Bonsai-27B lands at 86.2%** — the highest of the entire Bonsai family, edging past Ternary-Bonsai-8B (85.0%) and the dense Qwen3.5-4B (85.2%), though it doesn't close the gap to the ≥90% Qwen tier. The 1-bit **Bonsai-27B (82.9%)** beats the 1-bit Bonsai-8B (78.9%) by four points but lands *below* the 8B ternary model — at this scale, going ternary (2 bits) buys more accuracy than going 1-bit-but-bigger. **Ternary-Bonsai-8B (85.0%)** remains six points above the original Bonsai-8B and level with Qwen3.5-4B despite half the weight storage. **Ternary-Bonsai-4B (83.0%)** sits just under its Qwen counterpart with 40 % of the weight file. The smallest variant, **Ternary-Bonsai-1.7B (65.1%)**, slots between Qwen3.5-2B (69.9%) and Qwen3.5-0.8B (53.4%) — respectable given its 462 MiB footprint.
 
 The clearest cross-scale signal: within the Bonsai family, **ternary > 1-bit at every size that has both** (8B: 85.0% vs 78.9%; 27B: 86.2% vs 82.9%), and the ternary curve flattens hard above 8B — the 27B ternary adds only 1.2 points over the 8B ternary. Most of what a bigger backbone buys back is the categories 1-bit quantization damages most (see Persian and math below).
 
@@ -160,7 +164,7 @@ The llama.cpp models still follow the memory-bandwidth rule: smaller footprint �
 
 ![Hardest Questions](benchmark_plots/15_hardest_questions.png)
 
-The hardest questions across all twelve models remain the logic constraint puzzles (card ordering, clock angles, race ordering) and Persian language tasks. These require precise multi-step reasoning or strong multilingual knowledge — areas where smaller / more-quantized models struggle most. With 12 models now in the field, questions that Qwen3.5-27B aces but the 1.7B / 0.8B (and, on Persian, the 1-bit Bonsai-27B) get wrong reveal the minimum model capacity — and the minimum bit-width — required for each task.
+The hardest questions across all thirteen models remain the logic constraint puzzles (card ordering, clock angles, race ordering) and Persian language tasks. These require precise multi-step reasoning or strong multilingual knowledge — areas where smaller / more-quantized models struggle most. With 13 models now in the field, questions that Qwen3.5-27B and Qwen3.6-27B ace but the 1.7B / 0.8B (and, on Persian, the 1-bit Bonsai-27B) get wrong reveal the minimum model capacity — and the minimum bit-width — required for each task.
 
 ### Verbosity
 
@@ -168,9 +172,11 @@ The hardest questions across all twelve models remain the logic constraint puzzl
 
 ## Key Takeaways
 
-1. **Qwen3.5-27B is still the accuracy leader** at 95.7%. At 9.5 tok/s it's the slowest — best when correctness dominates latency.
+1. **Qwen3.5-27B is still the accuracy leader** at 95.7%, with **Qwen3.6-27B a close 94.2%** — the two dense 27B references sit well above everything else. Both are the slowest models here (~9.7 tok/s); best when correctness dominates latency.
 
-2. **Ternary-Bonsai-27B is the new Bonsai-family accuracy ceiling** — 86.2%, narrowly the best of all six Bonsai models, edging Ternary-Bonsai-8B (85.0%) and Qwen3.5-4B (85.2%). But scaling ternary from 8B to 27B adds only ~1 point overall: the family's accuracy has largely plateaued, and the ≥90% Qwen tier stays out of reach.
+2. **The 27B quantization ladder is the cleanest result in the set.** On one shared `qwen35` backbone, Q4_K_M (94.2%) → Q2_0 ternary (86.2%) → Q1_0 (82.9%) costs 11.3 points from 4-bit to 1-bit — but it's *entirely* concentrated in **math** (100 → 64) and **Persian** (80 → 45). General knowledge, history, coding, and language stay at 97–100% even at 1-bit. Factual/coding capability is nearly free to quantize; arithmetic and multilingual knowledge are what you pay for in bits.
+
+3. **Ternary-Bonsai-27B is the new Bonsai-family accuracy ceiling** — 86.2%, narrowly the best of all six Bonsai models, edging Ternary-Bonsai-8B (85.0%) and Qwen3.5-4B (85.2%). But scaling ternary from 8B to 27B adds only ~1 point overall: the family's accuracy has largely plateaued, and the ≥90% Qwen tier stays out of reach.
 
 3. **At 27B, ternary clearly beats 1-bit** — Ternary-Bonsai-27B (86.2%) tops Bonsai-27B (82.9%) by 3.3 points, driven almost entirely by **Persian (+21.5)** and math (+4.7). The 1-bit model even *trails the 8B ternary model* overall. Extra bits matter more than extra parameters for the capabilities Q1_0 damages.
 
@@ -215,27 +221,33 @@ Two ways to aggressively compress the same 8B Qwen3 architecture — which one w
 
 **Bottom line:** On today's Jetson, Bonsai-8B Q1_0 is the pragmatic choice if you need throughput and can live with ~79% accuracy. Ternary-Bonsai-8B is the pragmatic choice when accuracy matters more than tok/s, and becomes the dominant choice the moment the MLX-CUDA backend catches up to llama.cpp's kernel maturity. On Apple Silicon, Ternary-Bonsai is already the better option on all axes.
 
-## Bonsai-27B vs Ternary-Bonsai-27B: Q1_0 vs Q2_0 ternary, both on llama.cpp CUDA
+## The 27B quantization ladder: Q4_K_M → Q2_0 ternary → Q1_0, one backbone
 
-The same two-way question, one scale up — and this time **both** models are GGUF running on the Jetson GPU through llama.cpp, so the comparison is clean of any runtime asymmetry.
+Because Bonsai-27B and Ternary-Bonsai-27B are 1-bit / ternary quantizations of essentially the **same `qwen35` backbone as Qwen3.6-27B**, running all three side by side isolates exactly what each step down the bit-ladder costs — with no confound from model family, runtime, or thinking mode (all three are GGUF on Jetson CUDA, thinking off).
 
-| | Bonsai-27B (Q1_0, upstream llama.cpp) | Ternary-Bonsai-27B (Q2_0_g128, PrismML fork) |
-|---|:-:|:-:|
-| Weight size | **3.5 GiB** (~1.1-bit) | 6.7 GiB (~2.1-bit ternary effective) |
-| Overall accuracy | 82.9% | **86.2%** (+3.3 pts) |
-| General Knowledge | 100% | 100% |
-| Math | 64.3% | **69.0%** |
-| Coding | **97.6%** | 94.0% |
-| History | 98.8% | **100%** |
-| Logical Reasoning | 78.2% | **79.5%** |
-| Language Understanding | **96.4%** | 94.0% |
-| Persian | 45.2% | **66.7%** |
-| Gen tok/s (Jetson) | **14.7** | 13.7 |
-| Prompt tok/s (Jetson) | 83.1 | **94.3** |
-| Full-benchmark wall time | 425 s | **336 s** |
-| Runtime | mainline llama.cpp (CUDA) | PrismML fork (CUDA) |
+| | Qwen3.6-27B (Q4_K_M) | Ternary-Bonsai-27B (Q2_0_g128) | Bonsai-27B (Q1_0) |
+|---|:-:|:-:|:-:|
+| Effective bits/weight | ~4.5-bit | ~2.1-bit ternary | ~1.1-bit |
+| Weight size | 15.7 GiB | 6.7 GiB | **3.5 GiB** |
+| Overall accuracy | **94.2%** | 86.2% | 82.9% |
+| General Knowledge | 100% | 100% | 100% |
+| Math | **100%** | 69.0% | 64.3% |
+| Coding | **100%** | 94.0% | 97.6% |
+| History | 100% | 100% | 98.8% |
+| Logical Reasoning | 79.9% | 79.5% | 78.2% |
+| Language Understanding | 100% | 94.0% | 96.4% |
+| Persian | **79.8%** | 66.7% | 45.2% |
+| Gen tok/s (Jetson) | 9.7 | 13.7 | **14.7** |
+| Runtime | mainline llama.cpp | PrismML fork | mainline llama.cpp |
 
-**Accuracy:** Ternary wins the aggregate by 3.3 points, but the split is lopsided by category. It's essentially **one category — Persian (+21.5)** — plus a math edge (+4.7) that carries the difference; the two models are within a point on GK, logic, and history, and the 1-bit model actually *wins* coding (+3.6) and language (+2.4). The takeaway from the 8B comparison holds and sharpens: 1-bit quantization's damage is concentrated in multilingual and arithmetic, and a bigger backbone does **not** repair it (Bonsai-27B's 45.2% Persian is the worst in the whole family). If your workload is English knowledge/coding, the 1-bit 27B at half the disk is remarkably close; if it's multilingual, the ternary model is the clear pick.
+**What the bits buy:** the drop from 4-bit to 1-bit costs **11.3 points overall** (94.2 → 82.9), but it is spectacularly uneven. Four categories — **General Knowledge, History, Coding, Language** — barely move: even the 1-bit model holds 97–100% on all of them. The entire accuracy loss is concentrated in exactly two places:
+
+- **Math:** 100% → 69.0% → 64.3%. Ternary keeps a bit more arithmetic than 1-bit, but both fall off a cliff from Q4.
+- **Persian (multilingual):** 79.8% → 66.7% → **45.2%**. This is the single most bit-sensitive capability in the whole benchmark — each step down the ladder roughly halves the remaining headroom, and the 1-bit model loses almost half of Qwen3.6-27B's Persian ability.
+
+So the practical read on the ladder is: **factual recall, coding, and English comprehension are nearly free to quantize all the way to 1-bit; arithmetic and multilingual knowledge are what you pay for in bits.** Ternary (Q2_0) recovers roughly a third of the 1-bit → 4-bit Persian gap and a little math for 3.2 GiB more disk; Q4_K_M recovers the rest but at 4.5× the footprint of the 1-bit model.
+
+**Ternary vs 1-bit specifically:** ternary wins the aggregate by 3.3 points, essentially on **Persian (+21.5)** plus a math edge (+4.7); the two are within a point on GK, logic, and history, and the 1-bit model actually *wins* coding (+3.6) and language (+2.4). If your workload is English knowledge/coding, the 1-bit 27B at half the disk is remarkably close to ternary; if it's multilingual or arithmetic, ternary — or better, Q4 — is the clear pick.
 
 **Throughput:** Nearly identical (~14 tok/s gen) since both are 27B on the same 205 GB/s bus — and both are *honest llama.cpp CUDA numbers*, unlike the MLX Ternary models. The ternary model even edges prompt throughput (94 vs 83 tok/s) and finishes the full 98-question run faster (336 s vs 425 s), because Bonsai-27B, with thinking off, still tends to emit slightly longer answers on this set.
 
@@ -244,13 +256,13 @@ The same two-way question, one scale up — and this time **both** models are GG
 ## Running
 
 ```bash
-# Run the full benchmark (all 12 models)
+# Run the full benchmark (all 13 models)
 uv run llm_benchmark.py
 
 # Run specific models only
 uv run llm_benchmark.py qwen3.5-2b qwen3.5-0.8b qwen3.5-35b-a3b
 uv run llm_benchmark.py ternary-bonsai-1.7b ternary-bonsai-4b ternary-bonsai-8b
-uv run llm_benchmark.py bonsai-27b ternary-bonsai-27b
+uv run llm_benchmark.py bonsai-27b ternary-bonsai-27b qwen3.6-27b
 
 # Generate analysis plots
 uv run benchmark_eda.py
@@ -260,8 +272,9 @@ Requires passwordless sudo for `systemctl start/stop llama-server-*` (see `/etc/
 
 ### Running the 27B GGUF models
 
-Both 27B models are GGUF served through `llama-server`, with thinking disabled (`LLAMA_CHAT_TEMPLATE_KWARGS={"enable_thinking":false}` + `--reasoning off`) so they answer directly under the benchmark's small token budgets:
+All three 27B models are GGUF served through `llama-server`, with thinking disabled (`LLAMA_CHAT_TEMPLATE_KWARGS={"enable_thinking":false}` + `--reasoning off`) so they answer directly under the benchmark's small token budgets — matching how the other Qwen models were run:
 
+- **Qwen3.6-27B** (`Q4_K_M`, [unsloth GGUF](https://huggingface.co/unsloth/Qwen3.6-27B-GGUF)) runs on **mainline llama.cpp** — arch `qwen35`, stock `-DGGML_CUDA=ON` build, `-ngl 99`. Nothing special; it's the full-quality reference for the shared backbone.
 - **Bonsai-27B** (`Q1_0`) runs on **mainline llama.cpp** — `Q1_0` (1-bit, type 41) is upstreamed and has CUDA kernels, so a stock `-DGGML_CUDA=ON` build serves it on the Jetson GPU with `-ngl 99`.
 - **Ternary-Bonsai-27B** (`Q2_0`) needs the **[PrismML fork](https://github.com/PrismML-Eng/llama.cpp)** for GPU. Upstream `Q2_0` is group-64 and CPU/Metal-only; the fork's `prism` branch adds group-128 `Q2_0` **CUDA** kernels (and keeps `qwen35` arch support), so we serve the `Ternary-Bonsai-27B-Q2_0.gguf` (g128) file through the fork with `-ngl 99`. The upstream-compatible `Q2_g64.gguf` file loads on mainline but only on CPU (~2 tok/s) — the fork's g128 CUDA path is ~7× faster (13.7 tok/s).
 
@@ -286,7 +299,7 @@ The three `mlx-2bit` Ternary-Bonsai models are served by `~/ai/test-mlx-on-cuda/
 
 ## Author
 
-Arman Jafarnezhad w/ Claude Opus 4.6 Max Effort · Ternary-Bonsai MLX-CUDA run: Claude Opus 4.7 (1M) · 27B GGUF run (Bonsai-27B & Ternary-Bonsai-27B): Claude Opus 4.8
+Arman Jafarnezhad w/ Claude Opus 4.6 Max Effort · Ternary-Bonsai MLX-CUDA run: Claude Opus 4.7 (1M) · 27B GGUF run (Bonsai-27B, Ternary-Bonsai-27B & Qwen3.6-27B): Claude Opus 4.8
 
 ## Citation
 

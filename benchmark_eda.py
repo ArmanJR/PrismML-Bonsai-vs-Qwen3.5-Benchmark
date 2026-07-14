@@ -37,6 +37,7 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 COMPARISON_CSV = "benchmark_comparison_merged.csv"
 MODEL_CSVS = {
     "Qwen3.5-35B-A3B": "benchmark_qwen3.5-35b-a3b_20260401_215413.csv",
+    "Qwen3.6-27B": "benchmark_qwen3.6-27b_20260714_182442.csv",
     "Bonsai-27B": "benchmark_bonsai-27b_20260714_170024.csv",
     "Ternary-Bonsai-27B": "benchmark_ternary-bonsai-27b_20260714_173537.csv",
     "Qwen3.5-27B": "benchmark_qwen3.5-27b_20260401_091717.csv",
@@ -53,6 +54,7 @@ MODEL_CSVS = {
 # Visual identity
 MODEL_COLORS = {
     "Qwen3.5-35B-A3B": "#06d6a0",
+    "Qwen3.6-27B": "#4cc9f0",
     "Bonsai-27B": "#e85d04",
     "Ternary-Bonsai-27B": "#9d0208",
     "Qwen3.5-27B": "#4361ee",
@@ -66,12 +68,15 @@ MODEL_COLORS = {
     "Qwen3.5-0.8B": "#ef476f",
 }
 MODEL_ORDER = [
-    "Qwen3.5-35B-A3B", "Bonsai-27B", "Ternary-Bonsai-27B",
+    "Qwen3.5-35B-A3B", "Qwen3.6-27B", "Bonsai-27B", "Ternary-Bonsai-27B",
     "Qwen3.5-27B", "Qwen3.5-9B",
     "Bonsai-8B", "Ternary-Bonsai-8B",
     "Qwen3.5-4B", "Ternary-Bonsai-4B",
     "Qwen3.5-2B", "Ternary-Bonsai-1.7B", "Qwen3.5-0.8B",
 ]
+
+# Models added in later runs — highlighted (bold labels) so readers can spot them.
+NEW_MODELS = {"Qwen3.6-27B", "Bonsai-27B", "Ternary-Bonsai-27B"}
 
 CATEGORY_LABELS = {
     "general_knowledge": "General\nKnowledge",
@@ -89,6 +94,7 @@ DIFFICULTY_ORDER = ["easy", "medium", "hard"]
 # Weight file sizes in GiB (from model.safetensors / gguf on disk)
 MODEL_WEIGHT_GIB = {
     "Qwen3.5-35B-A3B": 20.5,
+    "Qwen3.6-27B": 15.662,
     "Bonsai-27B": 3.542,
     "Ternary-Bonsai-27B": 6.673,
     "Qwen3.5-27B": 15.6,
@@ -183,8 +189,23 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
 # Plot helpers
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def _emphasize_new_models(fig: plt.Figure):
+    """Bold any tick label or legend entry that names a newly added model."""
+    fig.canvas.draw()  # ensure tick-label text is populated
+    for ax in fig.axes:
+        for lbl in list(ax.get_xticklabels()) + list(ax.get_yticklabels()):
+            if lbl.get_text() in NEW_MODELS:
+                lbl.set_fontweight("bold")
+        leg = ax.get_legend()
+        if leg is not None:
+            for txt in leg.get_texts():
+                if txt.get_text() in NEW_MODELS:
+                    txt.set_fontweight("bold")
+
+
 def _save(fig: plt.Figure, name: str):
     path = OUTPUT_DIR / f"{name}.png"
+    _emphasize_new_models(fig)
     fig.savefig(path)
     plt.close(fig)
     log.info("Saved %s", path)
@@ -883,7 +904,11 @@ def plot_summary_table(comp: pd.DataFrame, detail: pd.DataFrame):
             cell.set_text_props(color=TEXT_COLOR, fontsize=10)
             cell.set_edgecolor(GRID_COLOR)
             if j == 0:
-                cell.set_text_props(color=MODEL_COLORS[MODEL_ORDER[i]], fontweight="bold", fontsize=11)
+                is_new = MODEL_ORDER[i] in NEW_MODELS
+                cell.set_text_props(
+                    color=MODEL_COLORS[MODEL_ORDER[i]], fontweight="bold",
+                    fontsize=12.5 if is_new else 11,
+                )
 
     ax.set_title("Benchmark Summary", fontsize=18, fontweight="bold", pad=20, color=TEXT_COLOR)
     fig.tight_layout()

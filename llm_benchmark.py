@@ -45,6 +45,8 @@ SYSTEM_PROMPT = "You are a helpful assistant. Answer directly and concisely."
 MODELS: list[dict[str, Any]] = [
     {"name": "Qwen3.5-35B-A3B", "service": "llama-server-qwen3.5-35b-a3b",
      "alias": "qwen3.5-35b-a3b", "params_b": 35.5, "quant": "Q4_K_M"},
+    {"name": "Qwen3.6-27B", "service": "llama-server-qwen3.6-27b",
+     "alias": "qwen3.6-27b", "params_b": 27.3, "quant": "Q4_K_M"},
     {"name": "Bonsai-27B", "service": "llama-server-bonsai-27b",
      "alias": "bonsai-27b", "params_b": 27.3, "quant": "Q1_0"},
     {"name": "Ternary-Bonsai-27B", "service": "llama-server-ternary-bonsai-27b",
