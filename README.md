@@ -24,8 +24,8 @@ The benchmark measures two things at once: how these aggressively-quantized Bons
 | Model | Params | Quant | Runtime | Architecture | Weight Size |
 |-------|-------:|-------|---------|--------------|------------:|
 | **Qwen3.5-35B-A3B** | 35.5 B (3B active) | Q4_K_M | llama.cpp | MoE Hybrid SSM + Attention | 20.5 GiB |
-| **Ternary-Bonsai-27B** | 27.3 B | Q2_0 (ternary, g128) | llama.cpp (PrismML fork, CUDA) | Hybrid Attention (Qwen3.5-27B 1.58-bit) | 6.7 GiB |
-| **Bonsai-27B** | 27.3 B | Q1_0 | llama.cpp (upstream, CUDA) | Hybrid Attention (Qwen3.5-27B 1-bit) | 3.5 GiB |
+| **Ternary-Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | 27.3 B | Q2_0 (ternary, g128) | llama.cpp (PrismML fork, CUDA) | Hybrid Attention (Qwen3.5-27B 1.58-bit) | 6.7 GiB |
+| **Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | 27.3 B | Q1_0 | llama.cpp (upstream, CUDA) | Hybrid Attention (Qwen3.5-27B 1-bit) | 3.5 GiB |
 | **Qwen3.5-27B** | 26.9 B | Q4_K_M | llama.cpp | Hybrid SSM + SWA + Full Attention | 15.6 GiB |
 | **Qwen3.5-9B** | 8.95 B | Q4_K_M | llama.cpp | Hybrid SSM + Attention | 5.3 GiB |
 | **Bonsai-8B** | 8.19 B | Q1_0 | llama.cpp | Dense Transformer (Qwen3-8B 1-bit) | 1.1 GiB |
@@ -74,11 +74,11 @@ Each question is run **3 times** per model. Scores report the mean across runs. 
 | Qwen3.5-27B | **95.7%** | 9.5 | 107 | 444s |
 | Qwen3.5-35B-A3B | 90.2% | 34.2 | 206 | 123s |
 | Qwen3.5-9B | 90.2% | 27.0 | 320 | 167s |
-| **Ternary-Bonsai-27B** | **86.2%** | 13.7 | 94 | 336s |
+| **Ternary-Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | **86.2%** | 13.7 | 94 | 336s |
 | Qwen3.5-4B | 85.2% | 36.7 | 473 | 181s |
 | Ternary-Bonsai-8B | 85.0% | 15.0 | 20 | 714s |
 | Ternary-Bonsai-4B | 83.0% | 23.9 | 38 | 470s |
-| **Bonsai-27B** | **82.9%** | 14.7 | 83 | 425s |
+| **Bonsai-27B** ![new](https://img.shields.io/badge/NEW-brightgreen) | **82.9%** | 14.7 | 83 | 425s |
 | Bonsai-8B | 78.9% | 46.5 | 554 | 117s |
 | Qwen3.5-2B | 69.9% | 68.4 | 978 | 93s |
 | Ternary-Bonsai-1.7B | 65.1% | 41.0 | 87 | 189s |
